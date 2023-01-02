@@ -6,7 +6,7 @@
 /*   By: amarroco <amarroco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:22:14 by amarroco          #+#    #+#             */
-/*   Updated: 2023/01/02 18:41:04 by amarroco         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:13:46 by amarroco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_putchar(int c)
 {
-	if (!c)
-		return (0);
 	write(1, &c, 1);
 	return (1);
 }
@@ -23,10 +21,12 @@ int	ft_putchar(int c)
 int	ft_putstr(char *s)
 {
 	int	len;
-
-	if (!s)
-		return (0);
-	len = ft_strlen(s);
+    
+    len = 0;
+    if (s)
+    {
+        len = ft_strlen(s);
+    }
 	write(1, s, len);
 	return (len);
 }
