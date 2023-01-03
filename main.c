@@ -6,7 +6,7 @@
 /*   By: amarroco <amarroco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:28:10 by amarroco          #+#    #+#             */
-/*   Updated: 2023/01/02 18:52:23 by amarroco         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:59:17 by amarroco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main(void)
 	char	*s = "caca";
 	unsigned int i = 4294967295;
 
-	ft_printf("ft_printf || %c | %s | %p | %d | %i | %u | %x | %X | %%\n", s[1], s, &s, 2147483647, -2147483648, i, i, i);
-	printf("printf    || %c | %s | %p | %d | %i | %u | %x | %X | %%\n", s[1], s, &s, 2147483647, (int)-2147483648, i, i, i);
+	ft_printf("ft_printf || %c | %s | %p | %d | %i | %u | %x | %X | %%\n", s[1], s, s, 2147483647, -2147483648, i, i, i);
+	printf("printf    || %c | %s | %p | %d | %i | %u | %x | %X | %%\n", s[1], s, s, 2147483647, (int)-2147483648, i, i, i);
 }

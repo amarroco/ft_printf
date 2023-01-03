@@ -6,13 +6,13 @@
 /*   By: amarroco <amarroco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:24:21 by amarroco          #+#    #+#             */
-/*   Updated: 2023/01/02 18:39:23 by amarroco         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:33:50 by amarroco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long long	ft_abs(long long int x)
+long long	ft_abs(long long x)
 {
 	if (x < 0)
 		return (-x);

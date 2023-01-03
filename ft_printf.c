@@ -6,7 +6,7 @@
 /*   By: amarroco <amarroco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 17:03:09 by amarroco          #+#    #+#             */
-/*   Updated: 2023/01/02 18:41:29 by amarroco         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:43:33 by amarroco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_uitoa(unsigned int n)
 	return (d);
 }
 
-char	*ft_uitohexa(long long unsigned n, const char f)
+char	*ft_uitohexa(unsigned long long n, const char f)
 {
 	char				*d;
 	int					i;
@@ -55,7 +55,7 @@ char	*ft_uitohexa(long long unsigned n, const char f)
 	while (i != 0)
 	{
 		i--;
-		if (f == 'x')
+		if (f == 'x' || f == 'p')
 			d[i] = "0123456789abcdef"[n % 16];
 		else
 			d[i] = "0123456789ABCDEF"[n % 16];
@@ -64,28 +64,25 @@ char	*ft_uitohexa(long long unsigned n, const char f)
 	return (d);
 }
 
-int	ft_print_arg(va_list args, const char f)
+int	ft_printarg(va_list args, const char f)
 {
 	int	len;
 
 	len = 0;
 	if (f == 'c')
-		len = ft_putchar(va_arg(args, int));
+		len = ft_printchar(va_arg(args, int));
 	else if (f == 's')
-		len = ft_putstr(va_arg(args, char *));
+		len = ft_printstr(va_arg(args, char *));
 	else if (f == 'p')
-	{
-		len = ft_putstr("0x");
-		len += ft_puthex((unsigned long long)va_arg(args, void *), 'x');
-	}
+		len = ft_printhex(va_arg(args, unsigned long long), f);
 	else if (f == 'd' || f == 'i')
-		len = ft_putnbr(va_arg(args, int));
+		len = ft_printnbr(va_arg(args, int));
 	else if (f == 'u')
-		len = ft_putunbr(va_arg(args, unsigned int));
+		len = ft_printunbr(va_arg(args, unsigned int));
 	else if (f == 'x' || f == 'X')
-		len = ft_puthex(va_arg(args, unsigned int), f);
+		len = ft_printhex(va_arg(args, unsigned int), f);
 	else if (f == '%')
-		len = ft_putchar('%');
+		len = ft_printchar('%');
 	return (len);
 }
 
@@ -101,9 +98,9 @@ int	ft_printf(const char *s, ...)
 	while (s[i])
 	{
 		if (s[i] == '%')
-			len += ft_print_arg(args, s[++i]);
+			len += ft_printarg(args, s[++i]);
 		else
-			len += ft_putchar(s[i]);
+			len += ft_printchar(s[i]);
 		i++;
 	}
 	va_end(args);
